@@ -30,14 +30,13 @@ jobs:
       - run: echo "pwd"
        
       - name: FTP Deployer
-        uses: sand4rt/ftp-deployer@v1.7
+        uses: kevinpainchaud/simple-ftp-deploy-action@v1.2.1
         with:
-            sftp: false # optional
-            host: ${{ secrets.FTP_SERVER }} # e.g. ftp.host.com or sftp.host.com (without ftp:// or ftps://)
-            port: 21 # optional, default is: 21
-            username: "admmx" # FTP username
-            password: ${{ secrets.FTP_PASSWORD }} # FTP password
-            remote_folder: "WebADM_MEX"
-            local_folder: "./repoPruebaGit"
-  
+          ftp_host: ${{ secrets.FTP_SERVER }}
+          ftp_username: "admmx"
+          ftp_password: ${{ secrets.FTP_PASSWORD }}
+          local_source_dir: "./repoPruebaGit"
+          dist_target_dir: "WebADM_MEX"
+          delete: "false"
+          
       - run: echo "termina transferencia"
