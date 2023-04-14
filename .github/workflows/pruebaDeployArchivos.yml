@@ -26,6 +26,8 @@ jobs:
       - uses: actions/checkout@v3
        
       - run: echo "inicia transferencia"
+      
+      - run: echo "pwd"
        
       - name: Sync files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
@@ -33,7 +35,7 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: myFtpUserName
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: "main/"
+          local-dir: "../../main/"
           server-dir: "WebADM_MEX/"
           
       - run: echo "termina transferencia"
