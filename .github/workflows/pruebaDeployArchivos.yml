@@ -29,13 +29,15 @@ jobs:
       
       - run: echo "pwd"
        
-      - name: Sync files
-        uses: webitsbr/github-to-ftp@1.0.1
+      - name: FTP Deployer
+        uses: sand4rt/ftp-deployer@v1.7
         with:
-          server: ${{ secrets.FTP_SERVER }}
-          server-dir: "WebADM_MEX/"
-          username: admmx
-          password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: "./"
-          
+            sftp: false # optional
+            host: ${{ secrets.FTP_SERVER }} # e.g. ftp.host.com or sftp.host.com (without ftp:// or ftps://)
+            port: 21 # optional, default is: 21
+            username: "admmx" # FTP username
+            password: ${{ secrets.FTP_PASSWORD }} # FTP password
+            remote_folder: "WebADM_MEX"
+            local_folder: "./repoPruebaGit"
+  
       - run: echo "termina transferencia"
