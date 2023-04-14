@@ -34,6 +34,6 @@ jobs:
           username: myFtpUserName
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: "main/"
-          server-dir: "WebADM_MEX"
+          server-dir: "WebADM_MEX/"
           
       - run: echo "termina transferencia"
