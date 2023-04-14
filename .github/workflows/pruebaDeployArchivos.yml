@@ -28,15 +28,16 @@ jobs:
       - run: echo "inicia transferencia"
       
       - run: echo "pwd"
-       
-      - name: FTP Deployer
-        uses: kevinpainchaud/simple-ftp-deploy-action@v1.2.1
+   
+      - name: scp pipeline
+        uses: cross-the-world/scp-pipeline@master
         with:
-          ftp_host: ${{ secrets.FTP_SERVER }}
-          ftp_username: "admmx"
-          ftp_password: ${{ secrets.FTP_PASSWORD }}
-          local_source_dir: "./repoPruebaGit"
-          dist_target_dir: "WebADM_MEX"
-          delete: "false"
+          host: ${{ secrets.FTP_SERVER }}
+          user: 'admmx'
+          pass: ${{ secrets.FTP_PASSWORD }}
+          port: 21
+          connect_timeout: 20s
+          local: './repoPruebaGit'
+          remote: '/WebADM_MEX/'
           
       - run: echo "termina transferencia"
