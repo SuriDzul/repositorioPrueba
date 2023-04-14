@@ -30,12 +30,12 @@ jobs:
       - run: echo "pwd"
        
       - name: Sync files
-        uses: SamKirkland/FTP-Deploy-Action@v2.0.0
+        uses: webitsbr/github-to-ftp@1.0.1
         with:
           server: ${{ secrets.FTP_SERVER }}
+          server-dir: "WebADM_MEX/"
           username: admmx
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: "./"
-          server-dir: "WebADM_MEX/"
           
       - run: echo "termina transferencia"
