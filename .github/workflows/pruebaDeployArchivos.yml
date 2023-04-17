@@ -26,18 +26,13 @@ jobs:
       - uses: actions/checkout@v3
        
       - run: echo "inicia transferencia"
-      
-      - run: echo "pwd"
    
-      - name: scp pipeline
-        uses: cross-the-world/scp-pipeline@master
+      - name: executing remote ssh commands using password
+        uses: appleboy/ssh-action@v0.1.10
         with:
-          host: ${{ secrets.FTP_SERVER }}
-          user: 'admmx'
-          pass: ${{ secrets.FTP_PASSWORD }}
-          port: 21
-          connect_timeout: 20s
-          local: './repoPruebaGit'
-          remote: '/WebADM_MEX/'
-          
+          host: 192.168.50.245
+          username: "dzulsuriel@gmail.com"
+          password: sdzul2081
+          script: whoami
+
       - run: echo "termina transferencia"
